@@ -1,0 +1,24 @@
+{
+  "name": "kafka",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "kafka:up": "docker-compose up -d",
+    "kafka:down": "docker-compose down",
+    "kafka:logs": "docker-compose logs -f kafka",
+    "topic:create": "tsx src/config/create-topic.ts",
+    "producer": "tsx src/producer/order-producer.ts",
+    "consumer:notification": "tsx src/consumer/notification-consumer.ts",
+    "consumer:analytics": "tsx src/consumer/analytics-consumer.ts"
+  },
+  "dependencies": {
+    "@types/node": "^26.0.1",
+    "kafkajs": "^2.2.4",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

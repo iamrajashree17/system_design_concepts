@@ -1,0 +1,40 @@
+Here's a classic LLD (Low-Level Design) interview question — **Hotel Management System**:
+
+---
+
+### Problem Statement: Design a Hotel Management System
+
+Design a system to manage hotel operations. Your design should include class diagrams (or code) covering the core entities, their relationships, and the key behaviors listed below.
+
+**Functional Requirements:**
+
+1. The hotel has multiple **branches** (locations), each with its own set of rooms.
+2. Rooms come in different **types** — e.g., Single, Double, Deluxe, Suite — each with different pricing and amenities.
+3. A room can have different **statuses**: Available, Booked, Occupied, Under Maintenance, Reserved.
+4. **Guests** should be able to search for available rooms based on:
+   - Location/branch
+   - Check-in and check-out dates
+   - Room type
+   - Number of occupants
+5. A guest can **book** a room for a given date range. The system should prevent double-booking of the same room for overlapping dates.
+6. Support **check-in** and **check-out** operations, which update room status accordingly.
+7. Support **cancellation** of a booking (with some cancellation policy — e.g., free cancellation before 24 hrs, else a fee applies).
+8. Calculate the **total bill** for a stay, factoring in:
+   - Room charges (per night rate × number of nights)
+   - Any additional services (room service, laundry, minibar, etc.)
+   - Taxes/discounts
+9. Support **payment** for a booking via multiple modes (Card, UPI, Cash) — assume this integrates with an external payment gateway.
+10. Hotel **staff/admin** should be able to:
+    - Add/remove rooms
+    - Update room status/pricing
+    - View occupancy reports for a branch
+11. (Optional/Extension) Support a **loyalty/rewards program** where frequent guests earn points redeemable for discounts.
+12. (Optional/Extension) Support **room upgrades** during a stay.
+
+**Non-functional considerations to think about:**
+- The system should be extensible to add new room types or payment modes without major rewrites.
+- Concurrent booking attempts for the same room/date range should be handled safely (no double-booking).
+
+---
+
+Take a shot at the class diagram / code (entities, relationships, key design patterns you'd use), and share it — I'll review it against common pitfalls once you're done.
