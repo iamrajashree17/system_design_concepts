@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { registerSchema, loginSchema } from '../validators/auth.validator.js';
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../utils/token.js';
-import { findUserByEmail, findUserById, createUser } from '../services/auth.service.js';
+import { createUser, findUserByEmail, findUserById } from '../services/auth.service.js';
 
 const SALT_ROUNDS = 10;
 const REFRESH_COOKIE_NAME = 'refresh_token';

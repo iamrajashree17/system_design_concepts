@@ -1,8 +1,8 @@
 import express from 'express';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
-import authRouter from './app/routes/auth.js';
-import jobRouter from './app/routes/job.js';
+import authRouter from './routes/auth.js';
+import jobRouter from './routes/job.js';
 
 const app = express();
 
