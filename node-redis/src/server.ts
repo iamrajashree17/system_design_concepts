@@ -5,6 +5,7 @@ import authRouter from './routes/auth.js';
 import jobRouter from './routes/job.js';
 import { connectRedis, disconnectRedis } from './redis/client.js';
 import { errorMiddleWare } from './middleware/error.middleware.js';
+import notificationRouter from './routes/notification.route.js';
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.get('/health', (req, res) => {
 
 app.use('/auth', authRouter);
 app.use('/job', jobRouter);
+app.use('/notification', notificationRouter);
 
 const port = process.env.PORT || 3000;
 
