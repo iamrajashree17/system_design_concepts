@@ -3,6 +3,8 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import authRouter from './routes/auth.js';
 import jobRouter from './routes/job.js';
+import { connectRedis, disconnectRedis } from './redis/client.js';
+import { errorMiddleWare } from './middleware/error.middleware.js';
 
 const app = express();
 
@@ -17,7 +19,7 @@ if (process.env.FORCE_HTTPS === 'true') {
         return next();
     });
 }
-
+await connectRedis();
 app.use(express.json());
 app.use(cookieParser());
 
@@ -32,4 +34,12 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
+});
+
+app.use(errorMiddleWare);
+
+process.on('SIGINT', async () => {
+    console.log('SIGINT signal received: closing HTTP server');
+    await disconnectRedis();
+    process.exit(0);
 });

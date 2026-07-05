@@ -7,7 +7,7 @@ import {
     getCurrentUser,
 } from '../controllers/auth.controller.js';
 import { requireAuth } from '../middleware/auth.middleware.js';
-import { authLimiter } from '../middleware/rateLimiter.js';
+import { authLimiter } from '../middleware/rateLimiter.middleware.js';
 
 const router = Router();
 

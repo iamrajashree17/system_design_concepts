@@ -10,19 +10,19 @@
 name: node-redis
 
 services:
-  server:
-    build:
-      context: .
-    environment:
-      NODE_ENV: production
-      PGHOST: db
-    env_file:
-      - .env
-    ports:
-      - 3000:3000
-    depends_on:
-      db:
-        condition: service_healthy
+  # server:
+  #   build:
+  #     context: .
+  #   environment:
+  #     NODE_ENV: production
+  #     PGHOST: db
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
 
   db:
     image: postgres:15.3-alpine
@@ -42,5 +42,18 @@ services:
       timeout: 5s
       retries: 5
 
+  redis:
+    image: redis:7-alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
 volumes:
   db-data:
+  redis-data:
