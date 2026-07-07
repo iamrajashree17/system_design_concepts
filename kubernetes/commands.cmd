@@ -54,3 +54,15 @@ kubectl describe pod nginx
 kubectl delete -f simple-pod.yaml
 or
 kubectl delete pod nginx
+
+# get namespace
+kubectl get namespace
+
+# create namespace
+kubectl create ns demo
+
+# create pod agian
+kubectl apply -f simple-pod-ns.yaml
+
+# list pods for namespace
+kubectl get pod -n demo
